@@ -1,0 +1,37 @@
+N = 5, M = 5
+char **board = malloc(sizeof(char *) * N);
+for (int i = 0; i < N; i++) {
+	board[i] = malloc(sizeof(char) * (M+1));
+}
+
+// make board
+for (int i = 0; i < N; i++) {
+	scanf("%s", board[i]);
+}
+
+// check my board
+printf("Your Board\n");
+for (int i = 0; i < N; i++) {
+	for (int j = 0; j < M; j++) {
+		printf("%c", board[i][j]);
+	}
+	printf("\n");
+}
+
+원래 make board를
+for (int i = 0; i < N; i++) {
+	for (int j = 0; j < M; j++) {
+		scanf("%c", &board[i][j]);
+	}
+} 
+이런 식으로 했는데
+뜻하지 않은 에러가 발생하는 듯하다.
+
+해결 *
+
+너무 바보같은 본인에게 화가난다.
+getchar()를 해주지 않아서 N과 M의 크기를 입력한 후,
+'\n'가 그대로 다음 scanf로 넘어갔다.
+그게 밀려버려서 계속 의도하는 출력이 나오지 않았다.
+C에서 scanf를 사용할 때, 입력에 개행이 있으면
+반드시 getchar()를 사용해주자.

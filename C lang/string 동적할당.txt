@@ -1,0 +1,23 @@
+N = 5, M = 5
+char **board = malloc(sizeof(char *) * N);
+for (int i = 0; i < N; i++) {
+	board[i] = malloc(sizeof(char) * (M+1));
+}
+
+// make board
+for (int i = 0; i < N; i++) {
+	scanf("%s", board[i]);
+}
+
+// check my board
+printf("Your Board\n");
+for (int i = 0; i < N; i++) {
+	for (int j = 0; j < M; j++) {
+		printf("%c", board[i][j]);
+	}
+	printf("\n");
+}
+
+당연히 sizeof(board[i]) / sizeof(char) = 4이다.
+board[i]는 할당된 첫 번째 char를 가리키는 char *이기 때문이다.
+32bit면 4byte, 64bit면 8byte를 리턴할 것이다.
